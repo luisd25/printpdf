@@ -16,7 +16,7 @@ class PDF extends FPDF
         // Movernos a la derecha
         $this->Cell(80);
         // T�tulo
-        $this->Cell(50,10,'Carta de Intimacion',1,0,'C');
+        $this->Cell(30,0,'INTIMACION DE PAGO',0,0,'C');
         // Salto de l�nea
         $this->Ln(20);
     }
@@ -53,7 +53,8 @@ $pdf->SetFont('Times','',12);
 $lengthx = max( array_map( 'count',  $values ) );
 
 for($i=0;$i<$lengthx;$i++){
-    $pdf->Cell(0,10,'por la presente se le informa a '.$values['nombre'][$i],0,1);
+    $pdf->MultiCell(0,10,'En la coiudad de Santo Domingo,Republica Dominicana, por la presente se le informa a '.$values['nombre'][$i].', con el prestamo '.$values['prestamo_id'][$i].' que tiene un monto de '.number_format($values['monto'][$i]).' desde la fecha '.$values['fecha_limite'][$i].'.',0,1);
+  //  $pdf->Cell(0,10,'En la coiudad de Santo Domingo,Republica Dominicana, por la presente se le informa a '.$values['nombre'][$i].',con el prestamo '.$values['prestamo_id'][$i].'que tiene un monto de '.$values['monto'][$i].'desde el dia '.$values['fecha_lmite'][$i],0,1);
     $pdf->AddPage();
     $pdf->SetFont('Times','',12);
 }
